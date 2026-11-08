@@ -5,74 +5,94 @@
 % Basis
 % ---------------------------------------------------------------
 \LoadClass[10pt,a4paper]{article}
-\RequirePackage[a4paper,left=17mm,right=17mm,top=14mm,bottom=14mm]{geometry}
+\RequirePackage[a4paper,left=19mm,right=19mm,top=16mm,bottom=18mm,footskip=8mm]{geometry}
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
 \RequirePackage{xcolor}
-\RequirePackage{microtype}   % fuer \textls (Sperrschrift der Abschnittstitel)
+\RequirePackage{microtype}   % Feinsatz + \textls (Sperrschrift der Abschnittstitel)
+\RequirePackage{ragged2e}    % Flattersatz mit massvoller Silbentrennung
 
 % ---------------------------------------------------------------
-% Schrift: serifenlos (Helvetica). Fuer Inter stattdessen die zwei
-% Zeilen darunter aktivieren (Paket "inter" muss installiert sein).
+% Schrift: Source Sans Pro (modern, gut lesbar, mit Semibold).
+% lmodern liefert skalierbare Ersatzschriften (noetig fuer microtype).
 % ---------------------------------------------------------------
-\RequirePackage[scaled=0.96]{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-%\RequirePackage[sfdefault]{inter}
+\RequirePackage{lmodern}
+\RequirePackage[default,semibold,lining]{sourcesanspro}
+\pdfmapfile{=SourceSansThree.map}  % Font-Map direkt laden (MiKTeX aktiviert sie nicht immer)
 
-% Etwas kleinere Grundschrift (ca. 9.2 pt) und lockerer Zeilenabstand
-\renewcommand{\normalsize}{\fontsize{9.2}{12.8}\selectfont}
-\renewcommand{\small}{\fontsize{8.4}{11.4}\selectfont}
-\renewcommand{\large}{\fontsize{9.8}{13}\selectfont}
+% Grundschrift ca. 9.8 pt mit grosszuegigem Zeilenabstand
+\renewcommand{\normalsize}{\fontsize{9.8}{13.6}\selectfont}
+\renewcommand{\small}{\fontsize{8.9}{12}\selectfont}
+\renewcommand{\footnotesize}{\fontsize{8.4}{11}\selectfont}
+\renewcommand{\large}{\fontsize{11}{14}\selectfont}
 \normalsize
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\pagestyle{empty}
+
+% Fusszeile: Name, Dokument, Seitenzahl (dezent grau, zentriert)
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\fancypagestyle{cv}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+  \fancyfoot[C]{\footnotesize\color{mymuted}Dr.~André Kaderli\enspace\textperiodcentered\enspace Lebenslauf\enspace\textperiodcentered\enspace Seite \thepage/\pageref*{LastPage}}%
+}
+\pagestyle{cv}
+
+% Flattersatz statt Blocksatz: keine Luecken zwischen Woertern, wenig Trennungen
+\AtBeginDocument{\RaggedRight}
+\setlength{\RaggedRightRightskip}{0pt plus 4em}
+\hyphenpenalty=2000
+\exhyphenpenalty=2000
+\clubpenalty=10000
+\widowpenalty=10000
 
 % ---------------------------------------------------------------
 % Farben
 % ---------------------------------------------------------------
-\definecolor{myblue}{HTML}{1F4E79}     % Akzentfarbe
-\definecolor{mytext}{HTML}{1C2733}     % Haupttext
-\definecolor{mymuted}{HTML}{5B6B7A}    % Datum, Kontaktzeile
-\definecolor{myrule}{HTML}{C9D3DC}     % feine Linie
+\definecolor{myblue}{HTML}{1A4D7C}     % Akzentfarbe
+\definecolor{mytext}{HTML}{222B36}     % Haupttext
+\definecolor{mymuted}{HTML}{66768A}    % Datum, Kontaktzeile
+\definecolor{myrule}{HTML}{D3DCE5}     % feine Linie
 \AtBeginDocument{\color{mytext}}
 
 % ---------------------------------------------------------------
 % Listen
 % ---------------------------------------------------------------
-\setlist[itemize]{leftmargin=4mm,labelsep=1.6mm,itemsep=0.6mm,topsep=0.8mm,parsep=0pt,partopsep=0pt,
-  label={\color{myblue}\raisebox{0.05ex}{\footnotesize\textbullet}}}
+\setlist[itemize]{leftmargin=4.2mm,labelsep=2mm,itemsep=0.9mm,topsep=1mm,parsep=0pt,partopsep=0pt,
+  label={\color{myblue}\raisebox{0.1ex}{\small\textbullet}}}
 
 % ---------------------------------------------------------------
 % Gliederung
-%   section       : Abschnittstitel (Grossbuchstaben, gesperrt, blaue Linie)
+%   section       : Abschnittstitel (Grossbuchstaben, gesperrt, Linie)
 %   subsection    : Organisation / Titel (fett, Haupttextfarbe)
 %   subsubsection : Position (halbfett, blau), Datum rechts in Grau
 % ---------------------------------------------------------------
 \titleformat{\section}
-  {\color{myblue}\footnotesize\bfseries\raggedright}
+  {\color{myblue}\fontsize{9.4}{12}\selectfont\bfseries\raggedright}
   {}{0em}{}
-  [{\color{myblue}\titlerule[0.9pt]}]
-\titlespacing*{\section}{0pt}{4.6mm}{1.8mm}
+  [\vspace{-0.6mm}{\color{myblue}\titlerule[0.7pt]}]
+\titlespacing*{\section}{0pt}{6.5mm}{2.6mm}
 
 \titleformat{\subsection}
   {\color{mytext}\large\bfseries\raggedright}
   {}{0em}{}
-\titlespacing*{\subsection}{0pt}{2.8mm}{0.7mm}
+\titlespacing*{\subsection}{0pt}{3.6mm}{0.8mm}
 
 \titleformat{\subsubsection}
-  {\color{myblue}\normalsize\bfseries\raggedright}
+  {\color{myblue}\normalsize\fontseries{sb}\selectfont\raggedright}
   {}{0em}{}
-\titlespacing*{\subsubsection}{0pt}{1.8mm}{0.3mm}
+\titlespacing*{\subsubsection}{0pt}{2.4mm}{0.4mm}
 
-% Datum (rechts, grau, nicht fett)
+% Datum (rechts, grau, nicht fett, tabellarische Ziffern)
 \newcommand{\cvdate}[1]{{\normalfont\small\color{mymuted}#1}}
 
 % Abschnitt: Titel in gesperrten Grossbuchstaben (Datum optional)
 \newcommand{\datedsection}[2]{%
-  \section[#1]{\textls[110]{\MakeUppercase{#1}}\hfill\cvdate{#2}}%
+  \section[#1]{\textls[140]{\MakeUppercase{#1}}\hfill\cvdate{#2}}%
 }
 % Organisation / Eintrag mit optionalem Datum
 \newcommand{\datedsubsection}[2]{%
@@ -84,23 +104,24 @@
 }
 
 % Eintrag "Label: Text" (Kenntnisse, Zertifizierungen, Weitere Angaben)
-\newcommand{\kv}[2]{\par\noindent{\bfseries\color{myblue}#1}\ #2\par\vspace{1.5mm}}
+% (\addvspace verschmilzt mit dem Abstand unter dem Abschnittstitel -> keine Doppel-Abstaende)
+\newcommand{\kv}[2]{\par\addvspace{2.2mm}\noindent{\fontseries{sb}\selectfont\color{myblue}#1}\ #2\par}
 
 % ---------------------------------------------------------------
 % Kopf: Name, Leitzeile, Kontaktzeile
 % ---------------------------------------------------------------
 \newcommand{\name}[1]{%
-  \noindent{\fontsize{25}{28}\selectfont\bfseries\color{myblue}#1}\par\vspace{2.6mm}}
+  \noindent{\fontsize{27}{31}\selectfont\bfseries\color{myblue}#1}\par\vspace{3.2mm}}
 
 \newcommand{\tagline}[1]{%
-  \noindent{\color{myblue}\vrule width 2.5pt}\hspace{3mm}%
-  \begin{minipage}[t]{\dimexpr\linewidth-5.6mm\relax}
-    \fontsize{9.6}{13.4}\selectfont\mdseries #1
-  \end{minipage}\par\vspace{3mm}}
+  \noindent{\color{myblue}\vrule width 2.2pt}\hspace{3mm}%
+  \begin{minipage}[t]{\dimexpr\linewidth-5.2mm\relax}
+    \RaggedRight\fontsize{10}{13.8}\selectfont\color{mytext!80} #1
+  \end{minipage}\par\vspace{3.6mm}}
 
 \newenvironment{contactline}
   {\noindent\small\color{mymuted}}
-  {\par\vspace{1.2mm}{\color{myrule}\hrule height 0.5pt}\vspace{1mm}}
+  {\par\vspace{2mm}{\color{myrule}\hrule height 0.5pt}\vspace{0.5mm}}
 
 % Trenner in der Kontaktzeile
-\newcommand{\sep}{\hspace{1.8mm}{\color{myblue!50}\textperiodcentered}\hspace{1.8mm}}
+\newcommand{\sep}{\hspace{2.2mm}{\color{myblue!45}\textbar}\hspace{2.2mm}}

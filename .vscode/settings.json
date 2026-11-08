@@ -14,7 +14,7 @@
   "latex-workshop.latex.recipes": [
     {
       "name": "pdflatex",
-      "tools": ["pdflatex"]
+      "tools": ["pdflatex", "pdflatex"]
     }
   ],
   "latex-workshop.latex.recipe.default": "first",
