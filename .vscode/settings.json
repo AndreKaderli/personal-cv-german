@@ -7,6 +7,8 @@
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
+        "-include-directory=%WORKSPACE_FOLDER%/class",
+        "-output-directory=%OUTDIR%",
         "%DOC%"
       ]
     }
@@ -18,5 +20,6 @@
     }
   ],
   "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.outDir": "%DIR%/build",
   "latex-workshop.view.pdf.viewer": "tab"
 }

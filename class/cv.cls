@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{template}[2026/11/08 Modern single-column CV class]
+\ProvidesClass{cv}[2026/11/08 Modern single-column CV class]
 
 % ---------------------------------------------------------------
 % Basis
@@ -74,7 +74,7 @@
 \titleformat{\section}
   {\color{myblue}\fontsize{9.4}{12}\selectfont\bfseries\raggedright}
   {}{0em}{}
-  [\vspace{-0.6mm}{\color{myblue}\titlerule[0.7pt]}]
+  [\nobreak\vspace{-0.6mm}\nobreak{\color{myblue}\titlerule[0.7pt]}\nobreak]
 \titlespacing*{\section}{0pt}{6.5mm}{2.6mm}
 
 \titleformat{\subsection}
@@ -102,6 +102,9 @@
 \newcommand{\datedsubsubsection}[2]{%
   \subsubsection[#1]{#1\hfill\cvdate{#2}}%
 }
+
+% Platzhalter (rot, fett) fuer noch zu ergaenzende Angaben
+\newcommand{\tbd}[1]{{\color{red}\bfseries[#1]}}
 
 % Beschreibungszeile ohne Bullet (fuer Eintraege mit nur einer Aussage)
 \newcommand{\desc}[1]{\par\addvspace{0.8mm}{\color{mytext!88}#1}\par}
