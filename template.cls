@@ -103,6 +103,9 @@
   \subsubsection[#1]{#1\hfill\cvdate{#2}}%
 }
 
+% Beschreibungszeile ohne Bullet (fuer Eintraege mit nur einer Aussage)
+\newcommand{\desc}[1]{\par\addvspace{0.8mm}{\color{mytext!88}#1}\par}
+
 % Eintrag "Label: Text" (Kenntnisse, Zertifizierungen, Weitere Angaben)
 % (\addvspace verschmilzt mit dem Abstand unter dem Abschnittstitel -> keine Doppel-Abstaende)
 \newcommand{\kv}[2]{\par\addvspace{2.2mm}\noindent{\fontseries{sb}\selectfont\color{myblue}#1}\ #2\par}

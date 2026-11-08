@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.1)  8 NOV 2026 08:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.1)  8 NOV 2026 09:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -813,7 +813,13 @@ LaTeX Font Info:    Font shape `TS1/SourceSansThree-TLF/m/n' will be
 {C:/Users/AndreKaderli/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/sourcesans
 /a_d4iwsr.enc}{C:/Users/AndreKaderli/AppData/Local/Programs/MiKTeX/fonts/enc/dv
 ips/sourcesans/a_44crgg.enc}]
-Overfull \hbox (0.12541pt too wide) in paragraph at lines 103--103
+Overfull \hbox (0.10283pt too wide) in paragraph at lines 83--83
+\T1/SourceSansThree-TLF/m/n/9.8 (+19) Kurse zu Data Literacy, Programmierung (P
+ython, R), Statistik, Datenanalyse und Visualisierung; Kundenschulungen zu 
+ []
+
+
+Overfull \hbox (0.12541pt too wide) in paragraph at lines 95--95
 []\T1/SourceSansThree-TLF/sb/n/9.8 (+2) Mathematik:[] \T1/SourceSansThree-TLF/m
 /n/9.8 (+2) Lineare Algebra, Analysis, Funktionentheorie, Wahrscheinlichkeitsth
 eorie, Statistik, Algebra, Zahlentheorie, 
@@ -827,20 +833,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: FA72CB602AF99F43E63410596744AFDD;4284.
+(rerunfilecheck)             Checksum: A1D24C6F8B38E9A53B01FBFEEC23862E;4152.
  ) 
 Here is how much of TeX's memory you used:
- 14691 strings out of 467871
- 249342 string characters out of 5414988
- 719190 words of memory out of 5000000
- 43215 multiletter control sequences out of 15000+600000
+ 14693 strings out of 467871
+ 249362 string characters out of 5414988
+ 718218 words of memory out of 5000000
+ 43217 multiletter control sequences out of 15000+600000
  771274 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,11n,93p,1007b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/AndreKaderli/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/source
 sans/SourceSans3-Regular.pfb><C:/Users/AndreKaderli/AppData/Local/Programs/MiKT
 eX/fonts/type1/adobe/sourcesans/SourceSans3-Semibold.pfb>
-Output written on template.pdf (2 pages, 177348 bytes).
+Output written on template.pdf (2 pages, 176838 bytes).
 PDF statistics:
  128 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
