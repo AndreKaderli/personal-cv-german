@@ -34,11 +34,13 @@
 % Fusszeile: Name, Dokument, Seitenzahl (dezent grau, zentriert)
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
+% Dokumentbezeichnung in der Fusszeile (im Anschreiben per \renewcommand aendern)
+\newcommand{\doclabel}{Lebenslauf}
 \fancypagestyle{cv}{%
   \fancyhf{}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
-  \fancyfoot[C]{\footnotesize\color{mymuted}Dr.~André Kaderli\enspace\textperiodcentered\enspace Lebenslauf\enspace\textperiodcentered\enspace Seite \thepage/\pageref*{LastPage}}%
+  \fancyfoot[C]{\footnotesize\color{mymuted}Dr.~André Kaderli\enspace\textperiodcentered\enspace \doclabel\enspace\textperiodcentered\enspace Seite \thepage/\pageref*{LastPage}}%
 }
 \pagestyle{cv}
 
@@ -131,3 +133,23 @@
 
 % Trenner in der Kontaktzeile
 \newcommand{\sep}{\hspace{2.2mm}{\color{myblue!45}\textbar}\hspace{2.2mm}}
+
+% ---------------------------------------------------------------
+% Brief (Anschreiben / Motivationsschreiben)
+% ---------------------------------------------------------------
+% Empfaengeradresse, Zeilen mit \\ trennen
+\newcommand{\recipient}[1]{%
+  \par\vspace{7mm}\noindent\begin{minipage}[t]{0.6\linewidth}\RaggedRight #1\end{minipage}\par}
+% Ort und Datum, rechtsbuendig
+\newcommand{\placedate}[1]{\par\vspace{5mm}{\raggedleft\color{mymuted}#1\par}}
+% Betreff
+\newcommand{\lettersubject}[1]{%
+  \par\vspace{5mm}\noindent{\fontsize{11.5}{15}\selectfont\fontseries{sb}\selectfont\color{myblue}#1}\par\vspace{4.5mm}}
+% Brieftext mit Absatzabstand (nur hier, CVs bleiben bei \parskip=0)
+\newenvironment{letterbody}
+  {\par\setlength{\parskip}{2.6mm}}
+  {\par}
+% Grussformel mit Platz fuer die Unterschrift
+\newcommand{\closing}[2]{\par\vspace{3mm}\noindent #1\par\vspace{12mm}\noindent #2\par}
+% Beilagen
+\newcommand{\enclosures}[1]{\par\vspace{6mm}\noindent{\small\color{mymuted}\fontseries{sb}\selectfont Beilagen:}\ {\small\color{mymuted}#1}\par}
