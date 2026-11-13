@@ -24,12 +24,14 @@ cv/<variante>/            eine Variante pro Ordner
   build/                  Build-Artefakte (von git ignoriert)
 pdf/<variante>/           fertige PDFs zum Versenden (gleiche Ordner wie cv/)
 build.ps1                 baut alle Varianten und kopiert die PDFs nach pdf/<variante>/
+.githooks/pre-commit      baut beim Commit die PDFs der geänderten Varianten neu
 ```
 
 ## Bauen
 
 - **VS Code (LaTeX Workshop):** eine `lebenslauf.tex` öffnen und speichern. Die PDF entsteht in `build/` neben der Datei und öffnet sich mit `Ctrl+Alt+V`.
 - **Alle Varianten:** im Projektordner `.\build.ps1` ausführen. Für einzelne Varianten den Ordnernamen angeben, z. B. `.\build.ps1 lehrauftrag-fh`.
+- **Automatisch beim Commit:** Der pre-commit Hook (`.githooks/pre-commit`) baut die PDFs der Varianten, deren `.tex` im Commit geändert ist (bei Änderungen an `class/` oder `build.ps1` alle), und nimmt sie in den Commit auf. Schlägt LaTeX fehl, wird der Commit abgebrochen. Einmalig pro Klon aktivieren: `git config core.hooksPath .githooks`. Überspringen: `git commit --no-verify`.
 - **Manuell:** `pdflatex -include-directory=<Projektordner>\class -output-directory=build lebenslauf.tex` im Ordner der Variante, **zweimal** ausführen (für die Gesamtseitenzahl in der Fusszeile).
 
 Neue Variante: Ordner unter `cv/` mit einer `lebenslauf.tex` anlegen (`\documentclass{cv}`). Optional den Dateinamen für `pdf/<variante>/` in `build.ps1` eintragen.

@@ -1,0 +1,30 @@
+#!/bin/sh
+# Baut vor jedem Commit die PDFs der betroffenen Varianten neu und nimmt sie in den Commit auf.
+#   - Aenderungen in cv/<variante>/  -> nur diese Variante
+#   - Aenderungen in class/ oder build.ps1 -> alle Varianten
+# Aktivieren (einmalig pro Klon):  git config core.hooksPath .githooks
+# Ueberspringen im Ausnahmefall:   git commit --no-verify
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$staged" ] && exit 0
+
+if echo "$staged" | grep -qE '^(class/|build\.ps1$)'; then
+    variants=$(ls -d cv/*/ 2>/dev/null | xargs -n1 basename)
+else
+    variants=$(echo "$staged" | sed -n 's#^cv/\([^/]*\)/.*\.tex$#\1#p' | sort -u)
+fi
+
+[ -z "$variants" ] && exit 0
+
+echo "pre-commit: baue PDFs fuer: $(echo $variants)"
+# shellcheck disable=SC2086
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 $variants
+if [ $? -ne 0 ]; then
+    echo "pre-commit: LaTeX-Build fehlgeschlagen, Commit abgebrochen (Log in cv/<variante>/build/)." >&2
+    exit 1
+fi
+
+for v in $variants; do
+    [ -d "pdf/$v" ] && git add "pdf/$v"
+done
+exit 0

@@ -2,7 +2,7 @@
 # Aufruf im Projektordner:  .\build.ps1
 # Nur eine Variante:         .\build.ps1 lehrauftrag-fh
 
-param([string[]]$Variants)
+param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Variants)
 
 # Nicht 'Stop': MiKTeX schreibt harmlose Hinweise nach stderr, die PowerShell 5.1 sonst als Fehler wertet
 $ErrorActionPreference = 'Continue'
